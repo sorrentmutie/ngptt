@@ -10,10 +10,28 @@ import { Product } from '../../models/product';
     } @else {
       <p>Non ci sono prodotti</p>
     }
+
+
+    @switch(accessLevel) {
+      @case('user') {
+        <p>Utente</p>
+      }
+      @case('admin') {
+        <p>Admin</p>
+      }
+      @default {
+        <p>Accesso negato</p>
+      }
+    }
+
+
   `,
   styles: ``
 })
 export class ProductPageComponent {
+
+   accessLevel: string = 'user';
+
 
    products: Product[] | undefined = undefined;
 

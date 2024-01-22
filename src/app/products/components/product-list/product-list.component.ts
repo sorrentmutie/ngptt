@@ -7,6 +7,9 @@ import { Product } from '../../models/product';
     @for(product of products; track product.id){
       <p>{{product.name}}</p>
     }
+    @empty {
+      
+    }
   `,
   styles: ``
 })
