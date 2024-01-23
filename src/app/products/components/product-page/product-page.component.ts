@@ -6,7 +6,7 @@ import { Product } from '../../models/product';
   template: `
     @if(products != null) {
       <p>Ci sono {{products.length}} prodotti</p>
-      <app-product-list [products]="products"></app-product-list> 
+      <app-product-list [products]="products" (productEmitter)="selectedProduct($event)"></app-product-list> 
     } @else {
       <p>Non ci sono prodotti</p>
     }
@@ -44,5 +44,9 @@ export class ProductPageComponent {
          pictureUrl: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/x/iphone-x-silver-select-2017?wid=470&hei=556&fmt=png-alpha&qlt=95&.v=1515606437811', price: 999, releaseDate: new Date(2017, 10, 3) },
         { id: 2, name: 'Galaxy S9', description: 'Samsung Galaxy', pictureUrl: 'https://images.samsung.com/is/image/samsung/p5/uk/smartphones/galaxy-s9/buy/1_Galaxy_S9_Lockup_Purple?$PD_GALLERY_L_JPG$', price: 899, releaseDate: new Date(2018, 2, 16)}
       ]
+   }
+
+   selectedProduct (product: Product): void {
+    console.log(product)
    }
 }
