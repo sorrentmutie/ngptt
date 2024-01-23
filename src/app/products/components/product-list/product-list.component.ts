@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -15,6 +15,7 @@ import { Product } from '../../models/product';
           <p class="card-text">{{product.description}}</p>
           <p>{{product.price | currency: 'EUR' }} </p>
           <p>{{product.releaseDate | date: 'dd/MM/yyyy'}}</p>
+          <button class="btn btn-success" (click)="doSomething(product)">OK</button>
         </div>
       </div>
     }
@@ -26,4 +27,11 @@ import { Product } from '../../models/product';
 })
 export class ProductListComponent {
    @Input() products: Product[] | undefined = undefined;  
+   @Output()productEmitter: EventEmitter<Product> = new EventEmitter<Product>();
+
+
+   doSomething(selectedProduct: Product): void {
+     this.productEmitter.emit(selectedProduct);
+   }
+
 }

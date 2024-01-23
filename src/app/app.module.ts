@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { ProductPageComponent } from './products/components/product-page/product-page.component';
 import { ProductListComponent } from './products/components/product-list/product-list.component';
 import { ProductPipe } from './products/pipes/product.pipe';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductPageComponent,
     ProductListComponent,
-    ProductPipe
+    ProductPipe,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

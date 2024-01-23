@@ -6,7 +6,7 @@ import { Product } from '../../models/product';
   template: `
     @if(products != null) {
       <p>Ci sono {{products.length}} prodotti</p>
-      <app-product-list [products]="products"></app-product-list> 
+      <app-product-list [products]="products" (productEmitter)="selectedProduct($event)"  ></app-product-list> 
     } @else {
       <p>Non ci sono prodotti</p>
     }
@@ -45,4 +45,9 @@ export class ProductPageComponent {
         { id: 2, name: 'Galaxy S9', description: 'Samsung Galaxy', pictureUrl: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/21_Angular_logo_logos-1024.png', price: 899, releaseDate: new Date(2018, 2, 16)}
       ]
    }
+
+   selectedProduct(product: Product): void {
+     console.log(product);
+   }
+
 }
