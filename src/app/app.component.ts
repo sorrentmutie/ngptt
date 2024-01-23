@@ -4,14 +4,31 @@ import { Product } from './products/models/product';
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Welcome to {{title}}!</h1>
-    <app-product-page></app-product-page>
+    <ng-container *ngIf="showMenu; else noMenu">
+      <div class="container-fluid">
+        <app-menu [menuList]='menuList'><p firstClass>test</p><p secondClass>testSecond</p></app-menu>
+      </div>
+    </ng-container>
+    <ng-template #noMenu>
+      <p> No Menu </p>
+    </ng-template>
+
+
+    <div class="container">
+      <button (click)="toggleMenu()">Toggle Menu</button>
+      <button (click)="addMenuItem()">Add Menu item</button>
+      <h1>Welcome to {{title}}!</h1>
+      <app-product-page></app-product-page>
+    </div>
+    <div class="container-fluid">
     <app-footer
     [data]="dataFooter"
     [numero]="numeroFooter"
     [prodotto]="prodottoFooter"></app-footer>
 
     <button class="btn" (click)="cambiaProdotto()">Cambia Prodotto</button>
+
+     </div>
   `,
   styles: []
 })
@@ -35,4 +52,19 @@ export class AppComponent {
       this.prodottoFooter.id = 1000
       this.prodottoFooter = {...this.prodottoFooter}
     }
+  showMenu = true;
+  menuList = [
+    { label: 'home', link: 'home'},
+    { label: 'contatti', link: 'contatti'},
+    { label: 'chi siamo', link: 'chi-siamo'}
+  ]
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
+
+  addMenuItem() {
+    this.menuList.push( { label: 'additional', link: 'additional'});
+    //this.menuList = [...this.menuList]
+  }
 }

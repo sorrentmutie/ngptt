@@ -1,4 +1,3 @@
-import { Interpolation } from '@angular/compiler';
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from '../../../products/models/product';
 
@@ -35,37 +34,37 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterContent
 
   }
   ngAfterViewChecked(): void {
-    this.foo = this.foo + ' sono nel ngAfterViewChecked';
+   // this.foo = this.foo + ' sono nel ngAfterViewChecked';
 
   }
 
 
   ngAfterViewInit(): void {
-    this.foo = this.foo + ' sono nel AfterViewInit';
+ //   this.foo = this.foo + ' sono nel AfterViewInit';
 
   }
 
 
   ngAfterContentChecked(): void {
-    this.foo = this.foo + ' sono nel AfterContentCHECKED';
+   // this.foo = this.foo + ' sono nel AfterContentCHECKED';
     
   }
 
 
   ngAfterContentInit(): void {
-    this.foo = this.foo + ' sono nel AfterContentInit';
+  //  this.foo = this.foo + ' sono nel AfterContentInit';
   }
 
 
   ngDoCheck(): void {
-    this.foo = this.foo + ' sono nel DoCheck'
+// this.foo = this.foo + ' sono nel DoCheck'
     
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.foo = this.foo + " sono nell'ngOnChanges"
+  //  this.foo = this.foo + " sono nell'ngOnChanges"
     
-      console.log(changes) 
+   //   console.log(changes) 
     // const x: string = changes['data'].currentValue
     // this.foo2 = x
 
