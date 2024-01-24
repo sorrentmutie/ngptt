@@ -4,6 +4,11 @@ import { Product } from './products/models/product';
 @Component({
   selector: 'app-root',
   template: `
+  <a routerLink="users/list">lista utenti!
+    
+  </a>
+
+    <router-outlet></router-outlet>
     <ng-container *ngIf="showMenu; else noMenu">
       <div class="container-fluid">
         <app-menu [menuList]='menuList'><p firstClass>test</p><p secondClass>testSecond</p></app-menu>
@@ -12,6 +17,8 @@ import { Product } from './products/models/product';
     <ng-template #noMenu>
       <p> No Menu </p>
     </ng-template>
+
+    <app-card></app-card>
 
 
     <div class="container">
