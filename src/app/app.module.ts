@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { LearnObservablesComponent } from './shared/components/learn-observables
 import { ReqResPageComponent } from './reqres/components/req-res-page/req-res-page.component';
 import { PersonCardComponent } from './reqres/components/person-card/person-card.component';
 import { RandomPageComponent } from './random-users/random-page/random-page.component';
+import { FirstInterceptor } from './shared/interceptors/first.interceptor';
+import { SecondInterceptor } from './shared/interceptors/second.interceptors';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,11 @@ import { RandomPageComponent } from './random-users/random-page/random-page.comp
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FirstInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: SecondInterceptor, multi: true}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
