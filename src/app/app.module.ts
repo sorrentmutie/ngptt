@@ -12,6 +12,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LearnObservablesComponent } from './shared/components/learn-observables/learn-observables.component';
 import { ReqResPageComponent } from './reqres/components/req-res-page/req-res-page.component';
 import { PersonCardComponent } from './reqres/components/person-card/person-card.component';
+import { RandomPageComponent } from './random-users/random-page/random-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PersonCardComponent } from './reqres/components/person-card/person-card
     FooterComponent,
     LearnObservablesComponent,
     ReqResPageComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    RandomPageComponent
   ],
   imports: [
     BrowserModule,
