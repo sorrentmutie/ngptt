@@ -18,7 +18,10 @@ import { Product } from './products/models/product';
       <button (click)="toggleMenu()">Toggle Menu</button>
       <button (click)="addMenuItem()">Add Menu item</button>
       <h1>Welcome to {{title}}!</h1>
-      <app-product-page></app-product-page>
+      <!-- <app-product-page></app-product-page>
+
+      <app-learn-observables/> -->
+      <app-req-res-page></app-req-res-page>
     </div>
     <div class="container-fluid">
     <app-footer
