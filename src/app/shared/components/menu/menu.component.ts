@@ -1,6 +1,9 @@
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { IMenuItem } from './menu.interfcae';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../../users/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -28,29 +31,48 @@ import { IMenuItem } from './menu.interfcae';
            <a class="nav-link" routerLinkActive="active" routerLink="/products" aria-current="page">Products</a>
         </li>
 
-
+        <li *ngIf="!authService.currentUser; else log">
+           <button (click)="login()">Log in</button>
+        </li>
       </ul>
       </div>
     </div>
   </nav>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+
+  <ng-template #log>
+    <li> 
+         <span>{{authService.currentUser?.email}}</span>
+         <img src="{{authService.currentUser?.avatar}}">
+         <button (click)="logout()">Logout</button></li>
+  </ng-template>
+
+
+  `
 })
 export class MenuComponent implements OnInit {
   constructor(
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public authService: AuthService,
+    private router: Router
   ) {}
 
   @Input() menuList: IMenuItem[] = [];
   counter: number = 0;
+  //currentUser: User |undefined = undefined;
 
   ngOnInit(): void {
-    setInterval(()=> {
-      this.counter += 1;
-    }, 1000)
+   //  this.currentUser = this.authService.currentUser;
   }
 
   refreshList() {
     this.cdr.detectChanges();
+  }
+
+  logout(){
+    this.authService.logout();
+  }
+
+  login(){
+    this.router.navigate(['']);
   }
 }

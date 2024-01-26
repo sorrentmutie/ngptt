@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-welcome',
@@ -8,14 +9,25 @@ import { Router } from '@angular/router';
       welcome works!
     </p>
     <button class="btn btn-info" (click)="navigate()">Naviga</button>
+    <button class="btn btn-info" (click)="login()">Login</button>
+    {{isLogged}}
   `,
   styles: ``
 })
 export class WelcomeComponent {
-    constructor(private router: Router){
+    isLogged = false;
+    constructor(private router: Router, private authService: AuthService){
 
     }
     navigate(){
         this.router.navigate(['random']);
+    }
+
+    login(){
+      this.authService.login().subscribe(
+        isLogged => {
+         this.isLogged = isLogged;
+        }
+      );
     }
 }
