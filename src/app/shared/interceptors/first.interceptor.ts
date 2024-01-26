@@ -3,7 +3,7 @@ import { Observable, map, tap, catchError, throwError } from "rxjs";
 
 export class FirstInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       console.log('First Interceptor is working');
+        console.log('First Interceptor is working');
         console.log(req);
 
        return next.handle(req).pipe(

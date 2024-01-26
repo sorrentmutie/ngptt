@@ -15,6 +15,8 @@ import { PersonCardComponent } from './reqres/components/person-card/person-card
 import { RandomPageComponent } from './random-users/random-page/random-page.component';
 import { FirstInterceptor } from './shared/interceptors/first.interceptor';
 import { SecondInterceptor } from './shared/interceptors/second.interceptors';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SecondInterceptor } from './shared/interceptors/second.interceptors';
     LearnObservablesComponent,
     ReqResPageComponent,
     PersonCardComponent,
-    RandomPageComponent
+    RandomPageComponent,
+    NotFoundComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

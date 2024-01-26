@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products-service';
 
@@ -6,10 +6,10 @@ import { ProductsService } from '../../services/products-service';
   selector: 'app-product-page',
   providers: [ProductsService],
   template: `
+  <app-product-list [products]="products" (productEmitter)="selectedProduct($event)"></app-product-list> 
     @if(products != null) {
       <p>Ci sono {{products.length}} prodotti</p>
-      <app-product-list [products]="products" (productEmitter)="selectedProduct($event)"></app-product-list> 
-    } @else {
+        } @else {
       <p>Non ci sono prodotti</p>
     }
 
@@ -27,15 +27,16 @@ import { ProductsService } from '../../services/products-service';
   `,
   styles: ``
 })
-export class ProductPageComponent {
+export class ProductPageComponent implements OnInit{
 
    accessLevel: string = 'user';
    products: Product[] | undefined = undefined;
-   //service = new ProductsService();
 
-   constructor(private service: ProductsService) {
-     this.products = this.service.loadProducts();
+   constructor(private service: ProductsService) {     // this.products = this.service.loadProducts();
    }
+  ngOnInit(): void {
+     this.service.loadProductsFromApi().subscribe(products => this.products = products);
+  }
    selectedProduct (product: Product): void {
     console.log(product)
    }

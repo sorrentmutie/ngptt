@@ -5,9 +5,6 @@ import { IMenuItem } from './menu.interfcae';
 @Component({
   selector: 'app-menu',
   template: `
-  <ng-content select="[firstClass]"></ng-content>
-  <ng-container *ngTemplateOutlet="greet"></ng-container>
-  <ng-template #greet><span>Hello</span></ng-template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -16,19 +13,26 @@ import { IMenuItem } from './menu.interfcae';
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-        @for( listItem of menuList; track listItem.label) {
+        <!-- @for( listItem of menuList; track listItem.label) {
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{listItem.link}}">{{listItem.label}}</a>
           </li>
-        }
-        <li class="nav-item nav-link">{{counter}}
+        } -->
+        <li class="nav-item">
+           <a class="nav-link" routerLinkActive="active" routerLink="/random" aria-current="page">Random Users</a>
         </li>
-        </ul>
+        <li class="nav-item">
+           <a class="nav-link" routerLinkActive="active" routerLink="/reqres" aria-current="page">ReqRes</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" routerLinkActive="active" routerLink="/products" aria-current="page">Products</a>
+        </li>
+
+
+      </ul>
       </div>
     </div>
   </nav>
-  <ng-content select="[secondClass]"></ng-content>
-    <button (click)="refreshList()"> Refresh </button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
