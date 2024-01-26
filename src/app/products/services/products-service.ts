@@ -28,4 +28,9 @@ export class ProductsService {
      loadProductsFromApi(): Observable<Product[]> {
         return this.http.get<Product[]>('http://localhost:3000/products');
      }  
+
+     getProductById(id: number): Product | undefined {
+       return this.loadProducts().find(p => p.id === id);
+     }
+    
 }

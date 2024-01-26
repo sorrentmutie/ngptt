@@ -5,9 +5,11 @@ import { ProductPageComponent } from './products/components/product-page/product
 import { ReqResPageComponent } from './reqres/components/req-res-page/req-res-page.component';
 import { RandomPageComponent } from './random-users/random-page/random-page.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 
 const routes: Routes = [
   {path: "products", component: ProductPageComponent},
+  {path: "products/:id", component: ProductDetailsComponent},
   {path: "reqres", component: ReqResPageComponent},
   {path: "random", component: RandomPageComponent},
   {path: "welcome", component: WelcomeComponent},

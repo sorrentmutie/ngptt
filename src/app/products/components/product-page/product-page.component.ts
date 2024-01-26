@@ -35,7 +35,8 @@ export class ProductPageComponent implements OnInit{
    constructor(private service: ProductsService) {     // this.products = this.service.loadProducts();
    }
   ngOnInit(): void {
-     this.service.loadProductsFromApi().subscribe(products => this.products = products);
+    this.products = this.service.loadProducts();
+     //this.service.loadProductsFromApi().subscribe(products => this.products = products);
   }
    selectedProduct (product: Product): void {
     console.log(product)

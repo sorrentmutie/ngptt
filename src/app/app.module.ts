@@ -17,6 +17,7 @@ import { FirstInterceptor } from './shared/interceptors/first.interceptor';
 import { SecondInterceptor } from './shared/interceptors/second.interceptors';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { WelcomeComponent } from './shared/components/welcome/welcome.component'
     PersonCardComponent,
     RandomPageComponent,
     NotFoundComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
