@@ -4,6 +4,8 @@ import { IMenuItem } from './menu.interfcae';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../../users/models/user';
 import { Router } from '@angular/router';
+import { CustomersService } from '../../../customers/customers.service';
+import { Customer } from '../../../customers/customer';
 
 @Component({
   selector: 'app-menu',
@@ -21,6 +23,12 @@ import { Router } from '@angular/router';
             <a class="nav-link active" aria-current="page" href="{{listItem.link}}">{{listItem.label}}</a>
           </li>
         } -->
+
+
+        <li class="nav-item">
+          <span>{{lastCustomer?.name}}</span>
+        </li>
+
         <li class="nav-item">
            <a class="nav-link" routerLinkActive="active" routerLink="/random" aria-current="page">Random Users</a>
         </li>
@@ -53,15 +61,21 @@ export class MenuComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private customersService: CustomersService
   ) {}
 
   @Input() menuList: IMenuItem[] = [];
   counter: number = 0;
+  lastCustomer: Customer | undefined = undefined;
   //currentUser: User |undefined = undefined;
 
   ngOnInit(): void {
    //  this.currentUser = this.authService.currentUser;
+   //this.customersService.customers$.subscribe(
+   // customer => this.lastCustomer = customer
+  // )
+
   }
 
   refreshList() {
@@ -74,5 +88,8 @@ export class MenuComponent implements OnInit {
 
   login(){
     this.router.navigate(['']);
+    this.customersService.customers$.subscribe(
+    customer => this.lastCustomer = customer
+   )
   }
 }

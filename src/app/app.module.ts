@@ -18,6 +18,8 @@ import { SecondInterceptor } from './shared/interceptors/second.interceptors';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { CustomersPageComponent } from './customers/customers-page/customers-page.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProductDetailsComponent } from './products/components/product-details/p
     RandomPageComponent,
     NotFoundComponent,
     WelcomeComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CustomersPageComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -7,14 +7,16 @@ import { RandomPageComponent } from './random-users/random-page/random-page.comp
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { randomGuard } from './shared/guards/random.guard';
+import { CustomersPageComponent } from './customers/customers-page/customers-page.component';
 
 const routes: Routes = [
+  {path: "customers", component: CustomersPageComponent },
   {path: "products", component: ProductPageComponent},
   {path: "products/:id", component: ProductDetailsComponent},
   {path: "reqres", component: ReqResPageComponent},
   {path: "random", component: RandomPageComponent, canActivate: [randomGuard]},
   {path: "welcome", component: WelcomeComponent},
-  {path: "", redirectTo: "welcome", pathMatch: "full"},
+  {path: "", redirectTo: "customers", pathMatch: "full"},
   {path: "**", component: NotFoundComponent}
 ];
 

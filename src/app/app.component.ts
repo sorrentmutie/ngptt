@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './products/models/product';
+import { SpinnerService } from './shared/services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { Product } from './products/models/product';
 
 
     <div class="container">
+      <app-spinner/>
       <router-outlet></router-outlet>      
     </div>
 
@@ -23,10 +25,6 @@ import { Product } from './products/models/product';
   styles: []
 })
 export class AppComponent {
-
-  constructor() {
-    // setInterval(()=> {this.dataFooter+='x'; this.numeroFooter+=1} , 2000)
-  }
 
   title = 'ngptt2';
 
