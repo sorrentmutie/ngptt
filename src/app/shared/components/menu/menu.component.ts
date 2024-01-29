@@ -71,13 +71,9 @@ export class MenuComponent implements OnInit {
   @Input() menuList: IMenuItem[] = [];
   counter: number = 0;
   lastCustomer: Customer | undefined = undefined;
-  //currentUser: User |undefined = undefined;
 
   ngOnInit(): void {
-   //  this.currentUser = this.authService.currentUser;
-   //this.customersService.customers$.subscribe(
-   // customer => this.lastCustomer = customer
-  // )
+  
 
   this.eventBusService.on(Events.CustomerCreated,
     (customer: Customer) => {this.lastCustomer = customer;})
