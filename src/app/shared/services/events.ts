@@ -1,10 +1,11 @@
 export enum Events {
-    CustomerChanged,
-    CustomerCreated,
-    CustomerDeleted,
+  CustomerChanged,
+  CustomerCreated,
+  CustomerDeleted,
+  UserLoggedIn,
+  UserLoggedOut,
 }
 
-
 export class EmitEvent {
-    constructor(public name: any, public value?: any){};
+  constructor(public name: any, public value?: any) {}
 }
