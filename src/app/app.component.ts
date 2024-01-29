@@ -17,6 +17,7 @@ import { SpinnerService } from './shared/services/spinner.service';
 
     <div class="container">
       <app-spinner/>
+      <app-event-bus></app-event-bus>
       <router-outlet></router-outlet>      
     </div>
 

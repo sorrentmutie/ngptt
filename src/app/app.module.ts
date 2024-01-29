@@ -20,6 +20,7 @@ import { WelcomeComponent } from './shared/components/welcome/welcome.component'
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { CustomersPageComponent } from './customers/customers-page/customers-page.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { EventBusComponent } from './shared/components/event.bus/event.bus.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     WelcomeComponent,
     ProductDetailsComponent,
     CustomersPageComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    EventBusComponent
   ],
   imports: [
     BrowserModule,

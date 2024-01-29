@@ -6,6 +6,8 @@ import { User } from '../../../users/models/user';
 import { Router } from '@angular/router';
 import { CustomersService } from '../../../customers/customers.service';
 import { Customer } from '../../../customers/customer';
+import { EventBusService } from '../../services/event-bus.service';
+import { Events } from '../../services/events';
 
 @Component({
   selector: 'app-menu',
@@ -62,7 +64,8 @@ export class MenuComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     public authService: AuthService,
     private router: Router,
-    private customersService: CustomersService
+    private customersService: CustomersService,
+    private eventBusService: EventBusService
   ) {}
 
   @Input() menuList: IMenuItem[] = [];
@@ -75,6 +78,9 @@ export class MenuComponent implements OnInit {
    //this.customersService.customers$.subscribe(
    // customer => this.lastCustomer = customer
   // )
+
+  this.eventBusService.on(Events.CustomerCreated,
+    (customer: Customer) => {this.lastCustomer = customer;})
 
   }
 
