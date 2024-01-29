@@ -5,10 +5,10 @@ import { AuthService } from '../services/auth.service';
 export const randomGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  if(authService.isLoggedIn){
+  if(authService.isLoggedIn && authService.currentUser?.roles.includes('admin')){
     return true;
   } else {
-    router.navigate(['welcome']);
+    router.navigate(['not-authorised']);
     return false;
   }  
 };

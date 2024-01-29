@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-welcome',
   template: `
     <p>
-      welcome works!
+     {{'welcome works! ' + ultimoProdotto + ' questo è il tuo ultimo prodotto'}} 
     </p>
     <button class="btn btn-info" (click)="navigate()">Naviga</button>
     <button class="btn btn-info" (click)="login()">Login</button>
@@ -16,7 +16,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class WelcomeComponent {
     isLogged = false;
+    ultimoProdotto : string | null = ''
+
     constructor(private router: Router, private authService: AuthService){
+      
+      this.ultimoProdotto = localStorage.getItem('ultimo-prodotto')
 
     }
     navigate(){

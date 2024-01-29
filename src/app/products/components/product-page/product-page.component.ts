@@ -6,12 +6,27 @@ import { ProductsService } from '../../services/products-service';
   selector: 'app-product-page',
   providers: [ProductsService],
   template: `
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link"routerLink="/products/create">Crea un nuovo prodotto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/products/edit">Modifica un prodotto</a>
+  </li>
+</ul>
+
+
+  <router-outlet></router-outlet>
+
   <app-product-list [products]="products" (productEmitter)="selectedProduct($event)"></app-product-list> 
     @if(products != null) {
       <p>Ci sono {{products.length}} prodotti</p>
         } @else {
       <p>Non ci sono prodotti</p>
     }
+    
 
     @switch(accessLevel) {
       @case('user') {
@@ -24,6 +39,10 @@ import { ProductsService } from '../../services/products-service';
         <p>Accesso negato</p>
       }
     }
+    <hr>
+
+
+
   `,
   styles: ``
 })

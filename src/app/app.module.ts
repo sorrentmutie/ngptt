@@ -18,6 +18,11 @@ import { SecondInterceptor } from './shared/interceptors/second.interceptors';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { NotAuthorisedComponent } from './shared/components/not-authorised/not-authorised.component';
+import { NotAvailableComponent } from './shared/components/not-available/not-available.component';
+import { CreateProductComponent } from './products/components/create-product/create-product.component';
+import { EditProductComponent } from './products/components/edit-product/edit-product.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,11 @@ import { ProductDetailsComponent } from './products/components/product-details/p
     RandomPageComponent,
     NotFoundComponent,
     WelcomeComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    NotAuthorisedComponent,
+    NotAvailableComponent,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -47,4 +56,9 @@ import { ProductDetailsComponent } from './products/components/product-details/p
   ],
   bootstrap: [AppComponent]
 })
+
+@NgModule({
+  imports: [RouterModule]
+})
+
 export class AppModule { }
