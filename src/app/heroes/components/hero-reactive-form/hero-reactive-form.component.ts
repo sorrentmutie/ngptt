@@ -58,9 +58,9 @@ import { MyValidator } from '../../../shared/validators/my-validator';
 export class HeroReactiveFormComponent {
    heroForm = this.fb.group(
     {
-      name: ['Batman', [Validators.required, Validators.minLength(5), MyValidator]],
-      power: ['Intelligenza'],
-      alterEgo: ['Bruce Wayne']
+      name: ['', [Validators.required, Validators.minLength(5), MyValidator]],
+      power: [''],
+      alterEgo: ['']
     });
 
     powers = ['Forza', 'Veloità', 'Intelligenza', 'Invisibilità'];
@@ -70,7 +70,7 @@ export class HeroReactiveFormComponent {
    }
 
    submit(){
-      console.log(this.heroForm);
+      
       const name= this.heroForm.get('name')?.value;
 
       if(name){
