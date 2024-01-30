@@ -49,14 +49,21 @@ import { MyValidator } from '../../../shared/validators/my-validator';
       </div>
 
       <div class="form-group">
+        <label for="scale">Livello Potere</label>
+        <select class="form-control" id="scale" formControlName="scale">
+          <option [value]="null">Seleziona un valore</option>
+          <option *ngFor="let s of scala" [value]="s">{{s}}</option>
+        </select>
+        <div *ngIf="livello?.invalid" class="alert alert-danger">Scegli un livello di potere</div>
+      </div>
+
+      <div class="form-group">
         <label for="ego">Alter-ego</label>
         <input type="text" class="form-control" id="ego" formControlName="alterEgo">
       </div>
 
-      <button [disabled]="nome?.invalid" type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="!formValid" type="submit" class="btn btn-primary">Submit</button>
 
-
-      {{formValid}}
 
     </form>
 
@@ -78,15 +85,26 @@ export class HeroReactiveFormComponent {
 
    heroForm = this.fb.group(
     {
-      name: ['Batman', [Validators.required, Validators.minLength(5), MyValidator]],
-      power: ['Intelligenza'],
-      alterEgo: ['Bruce Wayne']
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      power: ['', [Validators.required]],
+      scale: ['-1'],
+      alterEgo: ['']
     });
 
-    powers = ['Forza', 'Veloità', 'Intelligenza', 'Invisibilità'];
+    powers = ['Forza', 'Velocità', 'Intelligenza', 'Invisibilità'];
+    scala: number[] =  [];
+
 
    constructor(private fb: FormBuilder){
-     
+
+    this.heroForm.get('power')?.valueChanges.subscribe((x)=> {
+      if(x){
+      this.scala = this.showScale(x)
+      this.heroForm.get('scale')?.addValidators(Validators.min(0))
+      this.heroForm.get('scale')?.setValue('-1')
+      this.heroForm.updateValueAndValidity()
+      }})
+      
    }
 
    submit(){
@@ -98,8 +116,24 @@ export class HeroReactiveFormComponent {
      }
    }
 
+   private showScale(power: string): number[] {
+      switch (power){
+        case 'Forza':
+          return [1, 2, 3, 4, 5]
+        case 'Intelligenza':
+          return [1, 2, 3]
+        case 'Velocità':
+          return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        case 'Invisibilità':
+          return [1, 2]
+        default: 
+          return[]
+      }
+   }
+
 
    get formValid() { return this.heroForm.valid;}
-   get nome() { return this.heroForm.get('name');}
+   get nome() { return this.heroForm.get('name')}
+   get livello() { return this.heroForm.get('scale')}
 
 }
