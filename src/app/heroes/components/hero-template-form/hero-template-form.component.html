@@ -1,0 +1,24 @@
+<h3>Il form dell'eroe</h3>
+<form (ngSubmit)="submit()" #heroForm="ngForm" >
+
+   <div class="form-group">
+      <label for="nome">Nome</label>
+      <input #myName="ngModel" minlength="5" type="text" required [(ngModel)]="hero.name" class="form-control" id="nome" name="nome">
+  
+      <div *ngIf="myName.invalid && (myName.dirty || myName.touched)">        
+        <div *ngIf="myName.errors && myName.errors['required']"   class="alert alert-danger">Il nome è obbbligatorio</div>
+        <div *ngIf="myName.errors && myName.errors['minlength']"   class="alert alert-danger">La lunghezza minima è 5</div>
+      </div>  
+    </div>
+
+   <div class="form-group">
+    <label for="power">Super potere</label>
+    <select id="power" [(ngModel)]="hero.power" name="power" class="form-control">
+       <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+    </select>
+   </div>
+
+
+    <button type="button" class="btn btn-danger" (click)="reset();heroForm.reset()">Reset form</button>
+    <button [disabled]="heroForm.invalid" type="submit" class="btn btn-success" style="margin-top: 5px;">Submit</button>
+</form>

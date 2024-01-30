@@ -8,8 +8,12 @@ import { WelcomeComponent } from "./shared/components/welcome/welcome.component"
 import { ProductDetailsComponent } from "./products/components/product-details/product-details.component";
 import { randomGuard } from "./shared/guards/random.guard";
 import { CustomersPageComponent } from "./customers/customers-page/customers-page.component";
+import { HeroTemplateFormComponent } from "./heroes/components/hero-template-form/hero-template-form.component";
+import { HeroReactiveFormComponent } from "./heroes/components/hero-reactive-form/hero-reactive-form.component";
 
 const routes: Routes = [
+  { path: 'templateForm', component: HeroTemplateFormComponent},
+  { path: 'reactiveForm', component: HeroReactiveFormComponent},
   { path: "customers", component: CustomersPageComponent },
   { path: "products", component: ProductPageComponent },
   { path: "products/:id", component: ProductDetailsComponent },
@@ -20,7 +24,7 @@ const routes: Routes = [
     canActivate: [randomGuard],
   },
   { path: "welcome", component: WelcomeComponent },
-  { path: "", redirectTo: "welcome", pathMatch: "full" },
+  { path: "", redirectTo: "reactiveForm", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ];
 

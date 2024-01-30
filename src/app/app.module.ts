@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ToastrModule } from "ngx-toastr";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -24,6 +25,8 @@ import { CustomersPageComponent } from "./customers/customers-page/customers-pag
 import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
 import { EventBusComponent } from "./shared/components/event.bus/event.bus.component";
 import { MyNotificationComponent } from './shared/components/my-notification/my-notification.component';
+import { HeroTemplateFormComponent } from './heroes/components/hero-template-form/hero-template-form.component';
+import { HeroReactiveFormComponent } from './heroes/components/hero-reactive-form/hero-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +47,13 @@ import { MyNotificationComponent } from './shared/components/my-notification/my-
     SpinnerComponent,
     EventBusComponent,
     MyNotificationComponent,
+    HeroTemplateFormComponent,
+    HeroReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
