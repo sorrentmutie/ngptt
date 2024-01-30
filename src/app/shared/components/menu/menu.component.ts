@@ -69,10 +69,24 @@ import { NotificationService } from "../../services/notification.service";
                 routerLinkActive="active"
                 routerLink="/products"
                 aria-current="page"
-                >Products</a
-              >
+                >Products</a>
             </li>
-
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLinkActive="active"
+                routerLink="/templateForm"
+                aria-current="page"
+                >TD Form</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                routerLinkActive="active"
+                routerLink="/reactiveForm"
+                aria-current="page"
+                >Reactive Form</a>
+            </li>
             <li *ngIf="!currentUser; else log">
               <button (click)="login()">Log in</button>
             </li>

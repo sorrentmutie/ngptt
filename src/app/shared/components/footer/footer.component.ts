@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from '../../../products/models/product';
+import { catchError, from, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -7,17 +8,31 @@ import { Product } from '../../../products/models/product';
     <p>
       footer works!
     </p>
-    <input #myInput type="text" (keyup)="onKey(myInput.value)">
+ 
+
+
   `,
   styles: ``
 })
 export class FooterComponent {
 
-   onKey(value: string){
-   // const myInput = event.target as HTMLInputElement;
-   // console.log(myInput.value);
-   console.log(value);
-   }
+  srcArray = from([1, 'a2', 3, 4, 5])
+  .pipe(
+    map( x => {
+      let n = x as number * 3;
+      if(Number.isNaN(n)) {
+        throw new Error('NaN');
+      }
+      return n;
+
+    }),
+    catchError( err => {
+      console.log('Sono in catchError: ', err);
+      return of(-1);
+    })
+  );
+
+  mySubscription = this.srcArray.subscribe(x => console.log(x));
 
 
 }

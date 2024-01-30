@@ -27,9 +27,9 @@ import { defaultUrlMatcher } from "@angular/router";
       <router-outlet></router-outlet>
     </div>
 
-    <!-- <div class="container-fluid">
+    <div class="container-fluid">
       <app-footer></app-footer>
-    </div> -->
+    </div>
 
   `,
   styles: [],
