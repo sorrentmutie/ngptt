@@ -35,11 +35,7 @@ import { NotificationService } from "../../services/notification.service";
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <!-- @for( listItem of menuList; track listItem.label) {
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{listItem.link}}">{{listItem.label}}</a>
-          </li>
-        } -->
+         
 
             <li class="nav-item">
               <span>{{ lastCustomer?.name }}</span>
@@ -98,7 +94,7 @@ import { NotificationService } from "../../services/notification.service";
     <ng-template #log>
       <li>
         <span>{{ currentUser?.email }}</span>
-        <img src="{{ currentUser?.avatar }}" />
+        <img src="{{ currentUser?.avatar }}" style="width:30px" />
         <button (click)="logout()">Logout</button>
       </li>
     </ng-template>

@@ -24,7 +24,7 @@ const routes: Routes = [
     canActivate: [randomGuard],
   },
   { path: "welcome", component: WelcomeComponent },
-  { path: "", redirectTo: "reactiveForm", pathMatch: "full" },
+  { path: "", redirectTo: "welcome", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ];
 

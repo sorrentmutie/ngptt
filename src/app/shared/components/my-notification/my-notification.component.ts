@@ -4,7 +4,7 @@ import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-my-notification",
-  template: ` <p>my-notification works!</p> `,
+  template: ``,
   styles: ``,
 })
 export class MyNotificationComponent {

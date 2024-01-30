@@ -7,17 +7,7 @@ import { MyValidator } from '../../../shared/validators/my-validator';
 @Component({
   selector: 'app-hero-reactive-form',
   template: `
-    <p>
-      hero-reactive-form works!
-    </p>
-    <!-- <input type="text" [formControl]="myControl">
-
-    {{myControl.value}}
-    {{myObservable | async}}
-    <button (click)="change()">Cambia Valore</button> -->
-
     <form [formGroup]="heroForm" (ngSubmit)="submit()">
-
       <div class="form-group">
         <label for="name">Nome</label>
         <input required type="text" class="form-control" id="name" formControlName="name">
@@ -66,16 +56,6 @@ import { MyValidator } from '../../../shared/validators/my-validator';
   styles: ``
 })
 export class HeroReactiveFormComponent {
-    // myControl = new FormControl('valore iniziale');
-    // myObservable =  this.myControl.valueChanges.pipe(
-    //   map(value => value?.toUpperCase())
-    // );
-
-    // change(){
-    //   this.myControl.setValue('nuovo valore');
-    //   console.log(this.myControl);
-    // }
-
    heroForm = this.fb.group(
     {
       name: ['Batman', [Validators.required, Validators.minLength(5), MyValidator]],

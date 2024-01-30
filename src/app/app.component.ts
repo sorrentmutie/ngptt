@@ -22,7 +22,6 @@ import { defaultUrlMatcher } from "@angular/router";
 
     <div class="container">
       <app-spinner />
-      <app-event-bus></app-event-bus>
       <app-my-notification></app-my-notification>
       <router-outlet></router-outlet>
     </div>
