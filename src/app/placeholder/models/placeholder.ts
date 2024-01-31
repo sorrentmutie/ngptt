@@ -7,6 +7,7 @@ export interface PlaceholderUser {
   phone: string
   website: string
   company: Company
+  posts?: PlaceholderPost[]
 }
 
 export interface Address {
