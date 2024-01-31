@@ -10,8 +10,10 @@ import { randomGuard } from "./shared/guards/random.guard";
 import { CustomersPageComponent } from "./customers/customers-page/customers-page.component";
 import { HeroTemplateFormComponent } from "./heroes/components/hero-template-form/hero-template-form.component";
 import { HeroReactiveFormComponent } from "./heroes/components/hero-reactive-form/hero-reactive-form.component";
+import { SignalPageComponent } from "./signals/components/signal-page/signal-page.component";
 
 const routes: Routes = [
+  {path: 'signal', component: SignalPageComponent},
   { path: 'templateForm', component: HeroTemplateFormComponent},
   { path: 'reactiveForm', component: HeroReactiveFormComponent},
   { path: "customers", component: CustomersPageComponent },
@@ -24,7 +26,7 @@ const routes: Routes = [
     canActivate: [randomGuard],
   },
   { path: "welcome", component: WelcomeComponent },
-  { path: "", redirectTo: "welcome", pathMatch: "full" },
+  { path: "", redirectTo: "signal", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ];
 

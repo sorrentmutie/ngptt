@@ -27,6 +27,7 @@ import { EventBusComponent } from "./shared/components/event.bus/event.bus.compo
 import { MyNotificationComponent } from './shared/components/my-notification/my-notification.component';
 import { HeroTemplateFormComponent } from './heroes/components/hero-template-form/hero-template-form.component';
 import { HeroReactiveFormComponent } from './heroes/components/hero-reactive-form/hero-reactive-form.component';
+import { SignalPageComponent } from './signals/components/signal-page/signal-page.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HeroReactiveFormComponent } from './heroes/components/hero-reactive-for
     MyNotificationComponent,
     HeroTemplateFormComponent,
     HeroReactiveFormComponent,
+    SignalPageComponent,
   ],
   imports: [
     BrowserModule,

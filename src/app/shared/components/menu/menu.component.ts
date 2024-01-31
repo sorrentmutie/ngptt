@@ -15,6 +15,7 @@ import { Customer } from "../../../customers/customer";
 import { EventBusService } from "../../services/event-bus.service";
 import { Events } from "../../services/events";
 import { NotificationService } from "../../services/notification.service";
+import { SignalPageService } from "../../../signals/services/signal-page.service";
 
 @Component({
   selector: "app-menu",
@@ -83,6 +84,19 @@ import { NotificationService } from "../../services/notification.service";
                 aria-current="page"
                 >Reactive Form</a>
             </li>
+            <li  class="nav-item">
+              <span class="nav-link">
+              Numero Totale di prodotti: {{ signalPageService.productsList().length }}
+              </span>
+            </li>
+            <li  class="nav-item">
+              <span class="nav-link">
+              Ultimo Prodotto: {{ signalPageService.productsList()[
+                signalPageService.productsList().length - 1
+              ].name
+               }}
+              </span>
+            </li>
             <li *ngIf="!currentUser; else log">
               <button (click)="login()">Log in</button>
             </li>
@@ -109,7 +123,8 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private customersService: CustomersService,
     private eventBusService: EventBusService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public signalPageService: SignalPageService
   ) {}
 
   @Input() menuList: IMenuItem[] = [];
