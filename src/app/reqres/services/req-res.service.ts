@@ -11,11 +11,11 @@ export class ReqResService {
 
 
   getReqResData(): Observable<ReqResResponse>{
-     return  this.http.get<ReqResResponse>('https://reqres.in/api/users?page=2');
+     return  this.http.get<ReqResResponse>('https://reqres.in/api/users?page=2&delay=5');
   }
 
   getPeopleData(): Observable<Person[]> {
-   return this.http.get<ReqResResponse>('https://reqres.in/api/users?page=2')
+   return this.http.get<ReqResResponse>('https://reqres.in/api/users?page=2&delay=5')
       .pipe(map( r => r.data));
     ;
   }

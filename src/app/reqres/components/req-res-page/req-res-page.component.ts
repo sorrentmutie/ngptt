@@ -6,9 +6,9 @@ import { ReqResService } from '../../services/req-res.service';
 @Component({
   selector: 'app-req-res-page',
   template: `
-     <div *ngFor="let p of people$ | async" >
+   <div *ngFor="let p of people$ | async" >
         <app-person-card [person]="p"></app-person-card>
-     </div>
+     </div>    
   `,
   styles: ``
 })

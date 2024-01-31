@@ -10,6 +10,9 @@ import { AuthService } from '../../services/auth.service';
     </p>
     <button class="btn btn-info" (click)="navigate()">Naviga</button>
     <button class="btn btn-info" (click)="login()">Login</button>
+
+
+
   `,
   styles: ``
 })
