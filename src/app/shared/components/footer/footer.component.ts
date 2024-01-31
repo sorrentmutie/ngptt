@@ -72,12 +72,15 @@ constructor(){
 
 
 myObs = forkJoin([this.myUsers$, this.myPosts$])
-  .subscribe(res => {
-     const posts = res[1] as PlaceholderPost[];
-     const users = res[0] as PlaceholderUser[];
-      users.forEach(u => u.posts = posts.filter(p => p.userId === u.id));
-      console.log(users);
-      return users;
+.pipe(map( res => {
+  const posts = res[1] as PlaceholderPost[];
+  const users = res[0] as PlaceholderUser[];
+   users.forEach(u => u.posts = posts.filter(p => p.userId === u.id));
+   console.log(users);
+   return users;
+  }))
+  .subscribe(users => {
+    console.log(users)
   })
 
 
