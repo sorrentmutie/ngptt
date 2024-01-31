@@ -22,14 +22,13 @@ import { defaultUrlMatcher } from "@angular/router";
 
     <div class="container">
       <app-spinner />
-      <app-my-notification></app-my-notification>
+      <!-- <app-my-notification></app-my-notification> -->
       <router-outlet></router-outlet>
     </div>
 
     <div class="container-fluid">
       <app-footer></app-footer>
     </div>
-
   `,
   styles: [],
 })

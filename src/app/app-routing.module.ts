@@ -14,10 +14,10 @@ import { SignalPageComponent } from "./signals/components/signal-page/signal-pag
 import { PlaceholderPageComponent } from "./placeholder/components/placeholder-page/placeholder-page.component";
 
 const routes: Routes = [
-  { path: "placeholder", component: PlaceholderPageComponent},
-  { path: 'signal', component: SignalPageComponent},
-  { path: 'templateForm', component: HeroTemplateFormComponent},
-  { path: 'reactiveForm', component: HeroReactiveFormComponent},
+  { path: "placeholder", component: PlaceholderPageComponent },
+  { path: "signal", component: SignalPageComponent },
+  { path: "templateForm", component: HeroTemplateFormComponent },
+  { path: "reactiveForm", component: HeroReactiveFormComponent },
   { path: "customers", component: CustomersPageComponent },
   { path: "products", component: ProductPageComponent },
   { path: "products/:id", component: ProductDetailsComponent },
@@ -28,7 +28,7 @@ const routes: Routes = [
     canActivate: [randomGuard],
   },
   { path: "welcome", component: WelcomeComponent },
-  { path: "", redirectTo: "placeholder", pathMatch: "full" },
+  { path: "", redirectTo: "welcome", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ];
 

@@ -36,8 +36,6 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-         
-
             <li class="nav-item">
               <span>{{ lastCustomer?.name }}</span>
             </li>
@@ -66,7 +64,8 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
                 routerLinkActive="active"
                 routerLink="/products"
                 aria-current="page"
-                >Products</a>
+                >Products</a
+              >
             </li>
             <li class="nav-item">
               <a
@@ -74,7 +73,8 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
                 routerLinkActive="active"
                 routerLink="/templateForm"
                 aria-current="page"
-                >TD Form</a>
+                >TD Form</a
+              >
             </li>
             <li class="nav-item">
               <a
@@ -82,22 +82,26 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
                 routerLinkActive="active"
                 routerLink="/reactiveForm"
                 aria-current="page"
-                >Reactive Form</a>
+                >Reactive Form</a
+              >
             </li>
-            <li  class="nav-item">
+            <li class="nav-item">
               <span class="nav-link">
-              Numero Totale di prodotti: {{ signalPageService.productsList().length }}
+                Numero Totale di prodotti:
+                {{ signalPageService.productsList().length }}
               </span>
             </li>
-            <li  class="nav-item">
+            <li class="nav-item">
               <span class="nav-link">
-              Ultimo Prodotto: {{ signalPageService.productsList()[
-                signalPageService.productsList().length - 1
-              ].name
-               }}
+                Ultimo Prodotto:
+                {{
+                  signalPageService.productsList()[
+                    signalPageService.productsList().length - 1
+                  ].name
+                }}
               </span>
             </li>
-            <li *ngIf="!currentUser; else log">
+            <li *ngIf="authService && !authService?.user2(); else log">
               <button (click)="login()">Log in</button>
             </li>
           </ul>
@@ -106,9 +110,9 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
     </nav>
 
     <ng-template #log>
-      <li>
-        <span>{{ currentUser?.email }}</span>
-        <img src="{{ currentUser?.avatar }}" style="width:30px" />
+      <li *ngIf="authService && authService?.user2()">
+        <span>{{ authService && authService?.user2()?.email }}</span>
+        <img src="{{ authService?.user2()?.avatar }}" style="width:30px" />
         <button (click)="logout()">Logout</button>
       </li>
     </ng-template>
@@ -119,7 +123,7 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private customersService: CustomersService,
     private eventBusService: EventBusService,
@@ -145,9 +149,9 @@ export class MenuComponent implements OnInit {
       });
     });
 
-    this.authService.currentUser$.subscribe((user) => {
-      this.currentUser = user;
-    });
+    // this.authService.currentUser$.subscribe((user) => {
+    //   this.currentUser = user;
+    // });
   }
 
   refreshList() {

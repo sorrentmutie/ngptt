@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Signal, computed } from "@angular/core";
 import { Observable, Subject, delay, of, tap } from "rxjs";
 import { User } from "../../users/models/user";
 import { EventBusService } from "./event-bus.service";
 import { EmitEvent, Events } from "./events";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Injectable({
   providedIn: "root",
@@ -20,7 +21,9 @@ export class AuthService {
 
   private subjectUser$ = new Subject<User | undefined>();
 
-  currentUser$ = this.subjectUser$.asObservable();
+  private currentUser$ = this.subjectUser$.asObservable();
+  // user = toSignal(this.currentUser$, { initialValue: undefined });
+  user2: Signal<User | undefined> | undefined = undefined;
 
   constructor(private eventBus: EventBusService) {}
 
@@ -28,6 +31,7 @@ export class AuthService {
     return of(true).pipe(
       delay(1000),
       tap(() => {
+        this.user2 = computed(() => this.mockUser);
         this.subjectUser$.next(this.mockUser);
         this.isLoggedIn = true;
         this.eventBus.emit(new EmitEvent(Events.UserLoggedIn, this.mockUser));
@@ -39,5 +43,7 @@ export class AuthService {
   logout() {
     this.isLoggedIn = false;
     this.subjectUser$.next(undefined);
+    // this.user = toSignal(this.subjectUser$, { initialValue: undefined });
+    this.user2 = computed(() => undefined);
   }
 }

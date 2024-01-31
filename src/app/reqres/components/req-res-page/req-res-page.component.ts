@@ -1,36 +1,32 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ReqResService } from '../../services/req-res.service';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ReqResService } from "../../services/req-res.service";
 // import { Subscription } from 'rxjs';
 // import { Person, ReqResResponse } from '../../models/reqres';
 
 @Component({
-  selector: 'app-req-res-page',
+  selector: "app-req-res-page",
   template: `
-   <div *ngFor="let p of people$ | async" >
-        <app-person-card [person]="p"></app-person-card>
-     </div>    
+    <div *ngFor="let p of service.peopleData()">
+      <app-person-card [person]="p"></app-person-card>
+    </div>
   `,
-  styles: ``
+  styles: ``,
 })
 export class ReqResPageComponent {
+  // subscription: Subscription | undefined = undefined;
+  // data: ReqResResponse | undefined = undefined;
+  // people: Person[] | undefined = undefined;
 
-   // subscription: Subscription | undefined = undefined;
-   // data: ReqResResponse | undefined = undefined;
-   // people: Person[] | undefined = undefined; 
+  constructor(public service: ReqResService) {}
+  // ngOnDestroy(): void {
+  // this.subscription?.unsubscribe();
+  // }
+  // ngOnInit(): void {
+  //     // this.subscription = this.service.getReqResData()
+  //     //   .subscribe( data => this.data = data);
 
-    people$ = this.service.getPeopleData();
+  //     this.subscription = this.service.getPeopleData()
+  //     .subscribe( people => this.people = people);
 
-    constructor(private service: ReqResService){
-    }
-    // ngOnDestroy(): void {
-    // this.subscription?.unsubscribe();
-    // }
-    // ngOnInit(): void {
-    //     // this.subscription = this.service.getReqResData()
-    //     //   .subscribe( data => this.data = data);
-
-    //     this.subscription = this.service.getPeopleData()
-    //     .subscribe( people => this.people = people);
-
-    // }
+  // }
 }
