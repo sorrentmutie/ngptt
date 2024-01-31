@@ -109,9 +109,9 @@ import { SignalPageService } from "../../../signals/services/signal-page.service
     </nav>
 
     <ng-template #log>
-      <li *ngIf="authService && authService?.user2()">
-        <span>{{ authService && authService?.user2()?.email }}</span>
-        <img src="{{ authService?.user2()?.avatar }}" style="width:30px" />
+      <li *ngIf="authService.user2()">
+        <span>{{ authService.user2()?.email }}</span>
+        <img src="{{ authService.user2()?.avatar }}" style="width:30px" />
         <button (click)="logout()">Logout</button>
       </li>
     </ng-template>

@@ -35,7 +35,6 @@ export class AuthService {
 
   logout() {
     this.isLoggedIn = false;
-   // this.subjectUser$.next(undefined);
     this.user2.set( undefined);
   }
 }

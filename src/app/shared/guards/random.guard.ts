@@ -9,7 +9,7 @@ export const randomGuard: CanActivateFn = (route, state) => {
   const notificaService = inject(NotificationService);
   if (
     authService.isLoggedIn &&
-    authService.currentUser?.roles.includes("admin")
+    authService.user2()?.roles.includes("admin")
   ) {
     return true;
   } else {
