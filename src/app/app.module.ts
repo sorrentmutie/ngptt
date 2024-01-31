@@ -28,6 +28,7 @@ import { MyNotificationComponent } from './shared/components/my-notification/my-
 import { HeroTemplateFormComponent } from './heroes/components/hero-template-form/hero-template-form.component';
 import { HeroReactiveFormComponent } from './heroes/components/hero-reactive-form/hero-reactive-form.component';
 import { SignalPageComponent } from './signals/components/signal-page/signal-page.component';
+import { PlaceholderPageComponent } from './placeholder/components/placeholder-page/placeholder-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SignalPageComponent } from './signals/components/signal-page/signal-pag
     HeroTemplateFormComponent,
     HeroReactiveFormComponent,
     SignalPageComponent,
+    PlaceholderPageComponent,
   ],
   imports: [
     BrowserModule,
