@@ -29,6 +29,7 @@ import { HeroTemplateFormComponent } from './heroes/components/hero-template-for
 import { HeroReactiveFormComponent } from './heroes/components/hero-reactive-form/hero-reactive-form.component';
 import { SignalPageComponent } from './signals/components/signal-page/signal-page.component';
 import { PlaceholderPageComponent } from './placeholder/components/placeholder-page/placeholder-page.component';
+import { ProvaVeloceComponent } from './shared/components/prova-veloce/prova-veloce.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { PlaceholderPageComponent } from './placeholder/components/placeholder-p
     HeroReactiveFormComponent,
     SignalPageComponent,
     PlaceholderPageComponent,
+    ProvaVeloceComponent,
   ],
   imports: [
     BrowserModule,
